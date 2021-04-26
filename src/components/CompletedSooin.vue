@@ -6,17 +6,14 @@
 
 <script>
 export default {
-    props: {
-        sooins: {
-            type: Array,
-            required: true
-        }
-    },
-
     computed: {
-        numberOfCompletedSooin() {
-            return this.sooins.filter(sooin => sooin.cheched).length
-        }
+    //  sooins() {
+    //      return this.$store.state.sooins;
+    //  },
+     numberOfCompletedSooin() {
+         return this.$store.getters.numberOfCompletedSooin;
+     }
+        
     }
 }
 </script>

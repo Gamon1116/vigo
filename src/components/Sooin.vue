@@ -16,6 +16,7 @@
         class="btn btn-danger btn-sm"
         @click="clickDelete"
         >Delete</button>
+        {{ numberOfCompletedSooin }}
     </div>
 </template>
 
@@ -27,17 +28,34 @@ export default {
             required: true
         }
     },
+    computed: {
+        numberOfCompletedSooin() {
+         return this.$store.getters.numberOfCompletedSooin;
+     }
+    },
     methods: {
         toggleCheckbox(e) {
-            this.$emit('toggle-checkbox',{
-              id: this.sooin.id,
-               checked: e.target.checked
+            this.$store.dispatch('toggleSooin', {
+                id: this.sooin.id,
+                checked: e.target.checked 
             })
-        },
+            // this.$store.commit('TOGGLE_SOOIN', { 
+            //     id: this.sooin.id,
+            //     checked: e.target.checked 
+            //     })
+                
+
+        //     this.$emit('toggle-checkbox',{
+        //       id: this.sooin.id,
+        //        checked: e.target.checked
+        //     })
+            },
         clickDelete() {
-            this.$emit('click-delete', this.sooin.id);
+            this.$store.dispatch('deleteSooin', this.sooinId);
+            // this.$store.commit('DELETE_SOOIN', this.sooin.id);
+            // this.$emit('click-delete', this.sooin.id);
         }
-    },
+    }
 }
 </script>
 

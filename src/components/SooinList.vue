@@ -17,10 +17,9 @@ export default {
   components: {
     Sooin
   },
-  props: {
-    sooins: {
-      type: Array,
-      required: true
+  computed: {
+    sooins() {
+      return this.$store.state.sooins;
     }
   },
   methods: {

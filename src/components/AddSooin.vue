@@ -17,7 +17,10 @@ export default {
     },
     methods: {
         addSooin(e) {
-            this.$emit('add-sooin', e.target.value);
+            // this.$store.commit('ADD_SOOIN', e.target.value)
+            this.$store.dispatch('addSooin', e.target.value);
+            this.sooinText = '';
+            // this.$emit('add-sooin', e.target.value);
         }
     },
 }
